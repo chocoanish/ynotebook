@@ -6,6 +6,7 @@ var bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser')
 
+
 const JWT_SECRET = "HElloAni$h";
 
 // Route 1: making a Post request 

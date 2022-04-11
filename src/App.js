@@ -1,13 +1,24 @@
+import './App.css';
 import Titles from './components/Titles';
 import NotesInfo from './components/NotesInfo';
-import './App.css';
+import NoteState from './context/notes/noteState';
+import {
+  BrowserRouter as Router,
+  // Switch,
+  // Route
+} from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App">
-        <Titles />
-        <NotesInfo />
-    </div>
+    <>
+    <NoteState>
+      <Router>
+      <Titles />
+      <NotesInfo />
+      </Router>
+    </NoteState>
+    </>
   );
 }
 

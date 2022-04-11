@@ -1,34 +1,40 @@
-import react, { useState } from 'react';
+import React, { useState } from 'react';
 import '../App.css';
+import Notes from '../components/Notes';
+import Create from './Create';
+
 
 const Titles = (props) => {
+
+    // Adding 'close' class in nav element
     const [sidebar, setbar] = useState(false);
     const showsidebar = () => setbar(!sidebar);
-
-    const [mode,setmode] = useState(true);
-    const lidaMode = ()=> setmode(!mode);
-    const switchMode = ()=>{
+    // Toggling Modes
+    const [mode, setmode] = useState(true);
+    const lidaMode = () => setmode(!mode);
+    const switchMode = () => {
         lidaMode();
-        if(mode){
+        if (mode) {
             document.body.classList.add("dark");
         }
-        else{
+        else {
             document.body.classList.remove("dark");
         }
     }
+    const CreateEle = React.createElement('')
 
     return (
         <>
             {/* Sidebar */}
             <nav className={sidebar ? "sidebar" : "sidebar close"}>
                 <header>
-                    <div className="image-text">
+                    <div className="image-text" >
                         <span className="image">
                             <i className="fa-brands fa-pied-piper logo" />
                         </span>
                         <div className="text logo-text">
-                            <span className="name">Codinglab</span>
-                            <span className="profession">Web developer</span>
+                            <span className="name">{props.username} Anish Yadav</span>
+                            <span className="profession">{props.profession }Web developer</span>
                         </div>
                     </div>
                     <i className="fa-solid fa-angle-right toggle" onClick={showsidebar} />
@@ -40,18 +46,10 @@ const Titles = (props) => {
                             <input type="text" placeholder="Search..." />
                         </li>
                         <ul className="menu-links">
-                            <li className="nav-link true">
-                                <a href="/">
-                                    <i className="fa-solid fa-clipboard icon" />
-                                    <span className="text nav-text">Title</span>
-                                </a>
-                                <button className="trash">
-                                    <i className="fa-solid fa-trash-can icon" />
-                                </button>
-                            </li>
+                            <Notes />
                             {/* Create */}
                             <li className="nav-link true">
-                                <a href="/">
+                                <a href="/" >
                                     <i className="fa-solid fa-plus icon" />
                                     <span className="text nav-text">Create</span>
                                 </a>
@@ -72,7 +70,7 @@ const Titles = (props) => {
                                 <i className="fa-solid fa-moon moon icon" />
                                 <i className="fa-solid fa-sun sun icon" />
                             </div>
-                            <span className="mode-text text">{mode?"Light mode":"Dark mode"}</span>
+                            <span className="mode-text text">{mode ? "Light mode" : "Dark mode"}</span>
                             <div className="toggle-switch" onClick={switchMode}>
                                 <span className="switch" />
                             </div>

@@ -1,21 +1,24 @@
 import '../App.css';
 import NoteContext from '../context/notes/noteContext';
-import { useContext } from 'react';
-import Notes from './Notes';
+import { useContext, useState } from 'react';
 
 const NotesInfo = (props) => {
     const context = useContext(NoteContext);
-    const { notes, setNotes } = context;
-    let noteIndex = 0;
+    const { notes,noteIndex,getNote} = context;
+    // const [note,setNote] = useState({title: notes[noteIndex].title, description:  notes[noteIndex].description, tag: notes[noteIndex].tag})
+    // const onChange=(e)=>{
+    //     setNote({...note, [e.target.name]: e.target.value})
+    // }
+
     return (
         <>
             <section className="home">
                 <div className="big-title">
-                    <div className="text">{notes[noteIndex].title}</div>
-                    <div className="small-text">{notes[noteIndex].tag}</div>
+                    <div className="text">{props.title}</div>
+                    <div className="small-text">{props.tag}</div>
                 </div>
                 <button className="update">Publish</button>
-                <textarea id="text-notes" cols={30} rows={10} defaultValue={notes[noteIndex].description} />
+                <textarea id="text-notes" cols={30} rows={10} value={props.description}/>
             </section>
         </>
     )

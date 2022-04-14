@@ -1,6 +1,5 @@
 import './App.css';
 import Titles from './components/Titles';
-import NotesInfo from './components/NotesInfo';
 import NoteState from './context/notes/noteState';
 import {
   BrowserRouter as Router,
@@ -15,7 +14,6 @@ function App() {
     <NoteState>
       <Router>
       <Titles />
-      <NotesInfo />
       </Router>
     </NoteState>
     </>

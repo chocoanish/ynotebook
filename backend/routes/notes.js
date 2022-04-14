@@ -7,8 +7,9 @@ const Notes = require('../models/Notes')
 // Route 1: Get all notes using: GET "api/auth/getallnotes".  
 router.get('/fetchallnotes', fetchuser, async (req, res) => {
     try {
-        const notes = await Notes.find({ user: req.user.id });
+        const notes = await Notes.find({ user: req.user.id});
         res.json(notes);
+        console.log(req)
     } catch (error) {
         console.log(error.message);
         res.status(500).send("Internal Server error occured")
@@ -16,7 +17,7 @@ router.get('/fetchallnotes', fetchuser, async (req, res) => {
 })
 
 // Route 2: Adding notes using: POST "api/auth/addnotes".  
-router.get('/addnotes', fetchuser, [
+router.post('/addnotes', fetchuser, [
     body('title', 'Enter a valid title of minimum 3 characters').isLength({ min: 3 }),
     body('description', 'Enter aleast 5 character').isLength({ min: 5 })
 ],

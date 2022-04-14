@@ -1,23 +1,23 @@
-import React from 'react'
-import '../App.css'
+import React from 'react';
+import '../App.css';
+import { useContext } from 'react';
+import NoteContext from '../context/notes/noteContext';
 
-export default function Create() {
+
+
+const Create = (props) => {
+    const context = useContext(NoteContext);
+    const {add} = context;
     return (
-        <div className="center">
-            <h1>Add Note</h1>
-            <form method="post">
-                <div className="txt_field">
-                    <input type="text" required />
-                    <span />
-                    <label>Title</label>
-                </div>
-                <div className="txt_field">
-                    <input type="text" required />
-                    <span />
-                    <label>Tag</label>
-                </div>
-                <input type="submit" defaultValue="Create" />
-            </form>
-        </div>
+        <>
+            <li className="nav-link true" onClick={add}>
+                <span className='created'>
+                    <i className="fa-solid fa-plus icon" />
+                    <span className="text nav-text">Create</span>
+                </span>
+            </li>
+        </>
     )
 }
+
+export default Create;

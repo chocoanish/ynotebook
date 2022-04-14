@@ -1,23 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import NoteContext from '../context/notes/noteContext';
 import { useContext } from 'react';
+import NotesItem from './NotesItem';
 
 const Notes = (props) => {
     const context = useContext(NoteContext);
-    const { notes, setNotes } = context;
+    const { notes, getNote} = context;
+    useEffect(()=>{getNote()},[]);
     return (
         <>
-            {notes.map((note,index) => (
-                <li className="nav-link true" key={index} >
-                    <a href="/">
-                        <i className="fa-solid fa-clipboard icon" />
-                        <span className="text nav-text">{note.title}</span>
-                    </a>
-                    <button className="trash">
-                        <i className="fa-solid fa-trash-can icon" />
-                    </button>
-                </li>
-            ))}
+            {notes.map((note, index) => {
+                return <NotesItem key={note._id} id={note._id} title={note.title} description={note.description} tag={note.tag} />
+            })}
         </>
     )
 }

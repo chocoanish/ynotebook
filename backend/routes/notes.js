@@ -7,9 +7,8 @@ const Notes = require('../models/Notes')
 // Route 1: Get all notes using: GET "api/auth/getallnotes".  
 router.get('/fetchallnotes', fetchuser, async (req, res) => {
     try {
-        const notes = await Notes.find({ user: req.user.id});
+        const notes = await Notes.find({ user: req.user.id });
         res.json(notes);
-        console.log(req)
     } catch (error) {
         console.log(error.message);
         res.status(500).send("Internal Server error occured")

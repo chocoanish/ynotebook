@@ -8,7 +8,7 @@ import NoteContext from '../context/notes/noteContext';
 const Popup = (props) => {
     const context = useContext(NoteContext);
     const { addNote, open, add,setOpen} = context;
-    const [note, setNote] = useState({ title: "", description: "You are free to write now!!!", tag: "" })
+    const [note, setNote] = useState({ title: "", description: "", tag: "" })
     const handleCreate = (e) => {
         e.preventDefault();
         addNote(note.title, note.description, note.tag)
@@ -36,6 +36,11 @@ const Popup = (props) => {
                             <input type="text" id='tag' name='tag' onChange={onChange} required />
                             <span />
                             <label>Tag</label>
+                        </div>
+                        <div className="txt_field">
+                            <input type="text" id='description' name='description' onChange={onChange} required />
+                            <span />
+                            <label>Description</label>
                         </div>
                         <input type="submit" value="Create" onClick={handleCreate} />
                     </form>

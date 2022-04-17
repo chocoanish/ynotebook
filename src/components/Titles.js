@@ -11,11 +11,12 @@ import Default from '../components/Default'
 const Titles = (props) => {
     const context = useContext(NoteContext);
     const {open,currentNote,hide} = context;
+
     return (
         <>
             <Popup open={open}/>
             <Sidebar />
-            {hide?<NotesInfo title = {currentNote.title} description = {currentNote.description} tag = {currentNote.tag}/>:<Default />}
+            {hide?<NotesInfo id={currentNote._id} title = {currentNote.title} description = {currentNote.description} tag = {currentNote.tag}/>:<Default />}
         </>
     )
 }

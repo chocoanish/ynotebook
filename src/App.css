@@ -318,7 +318,10 @@ body.dark .home .text{
   font-size: 30px;
   font-weight: 500;
 }
-.update:hover{
+.active{
+  background-color: var(--success);
+}
+/* .update:hover{
   background-color: var(--success);
 }
 .update:hover .icon,
@@ -328,7 +331,7 @@ body.dark .home .text{
 body.dark .update:hover .icon,
 body.dark .update:hover .text{
   color: var(--text-color);
-}
+} */
 #text-notes{
   height: 500px;
   margin: 20px;
@@ -484,10 +487,10 @@ input[type="submit"]:hover{
 .created:hover .text{
   color: var(--sidebar-color);
 }
-body.dark .li:hover .icon,
+body.dark li:hover .icon,
 body.dark .created:hover .text{
   color: var(--text-color);
-  background: #242526;
+  background: #3a3b3c;
 }
 /* body.dark .popup:hover .icon{
   color: var(--text-color);

@@ -13,6 +13,7 @@ const NoteState = (props) => {
     const [noteIndex, setIndex] = useState(0);
     const [currentNote, setcurNote] = useState([])
     const [hide,setHide] = useState(false);
+    const {pub,setPub} = useState(false);
 
     // FUNCTIONS
     // 1:Getting all notes
@@ -52,6 +53,7 @@ const NoteState = (props) => {
         };
         setNotes(notes.concat(note));
         getNote()
+        // console.log(notes)
     }
 
     // 3:Deleting a note
@@ -76,10 +78,10 @@ const NoteState = (props) => {
         setNotes(newNotes);
         setcurNote([{
             title: "Create a new Note",
-            description: "You are free to write now!!!",
-            tag: "aegberg",
+            description: "You are free to write now!",
+            tag: "",
         }])
-        setHide(!hide);
+        setHide(false);
     }
 
     // 4:Editing a note
@@ -88,7 +90,8 @@ const NoteState = (props) => {
         const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI1NjU4N2VkYjNiNTdkMDRkYzY5N2JkIn0sImlhdCI6MTY0OTgyNTkyNn0.P2pXQc4DxslOMFJ42lZ_XY79ubUmm3nK1mrxBcd7M1g'
+                'Content-Type': 'application/json',
+                'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI1NjU4N2VkYjNiNTdkMDRkYzY5N2JkIn0sImlhdCI6MTY0OTgyNTkyNn0.P2pXQc4DxslOMFJ42lZ_XY79ubUmm3nK1mrxBcd7M1g'
             },
             body: JSON.stringify({ title, description, tag })
         });
@@ -127,7 +130,7 @@ const NoteState = (props) => {
 
 
     return (
-        <NoteContext.Provider value={{ notes, noteIndex, setNotes, deleteNote, showNote, addNote, editNote, getNote, open, setOpen, add, currentNote,hide }}>
+        <NoteContext.Provider value={{ notes, noteIndex, setNotes, deleteNote, showNote, addNote, editNote, getNote, open, setOpen, add, currentNote, hide, pub, setPub}}>
             {props.children}
         </NoteContext.Provider>
     )
